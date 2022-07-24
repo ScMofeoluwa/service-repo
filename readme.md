@@ -1,0 +1,1 @@
+Trying to implement the service repository pattern in Typescript
