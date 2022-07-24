@@ -1,0 +1,17 @@
+{
+  "name": "service-repo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "pre-build": "rm -rf ./dist",
+    "build": "yarn run pre-build && yarn tsc -p ./tsconfig.build.json",
+    "ts-node": "ts-node"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^4.8.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
