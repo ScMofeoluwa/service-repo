@@ -15,9 +15,9 @@ export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
     return !!result;
   }
 
-  async update(id: string, item: T): Promise<any> {
+  async update(id: string, item: T): Promise<boolean> {
     const result = await this._model.findByIdAndUpdate(id, { $set: item });
-    return result;
+    return !!result;
   }
 
   async delete(id: string): Promise<boolean> {
@@ -32,7 +32,7 @@ export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
 
   async findOne(id: string): Promise<T> {
     const result = await this._model.findById(id);
-    //@ts-ignore
+    // @ts-ignore
     return result;
   }
 }
