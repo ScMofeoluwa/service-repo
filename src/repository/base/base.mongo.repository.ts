@@ -10,9 +10,9 @@ export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
     this._model = model<T>(modelName, schema);
   }
 
-  async create(item: T): Promise<boolean> {
+  async create(item: T): Promise<T> {
     const result = await this._model.create(item);
-    return !!result;
+    return result;
   }
 
   async update(id: string, item: T): Promise<boolean> {
