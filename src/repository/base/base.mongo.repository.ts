@@ -1,6 +1,6 @@
 import { IWrite } from "../../interfaces/IWrite";
 import { IRead } from "../../interfaces/IRead";
-
+import shortid from "shortid";
 import { Schema, model, Model } from "mongoose";
 
 export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
@@ -10,13 +10,19 @@ export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
     this._model = model<T>(modelName, schema);
   }
 
-  async create(item: T): Promise<T> {
-    const result = await this._model.create(item);
+  async create(item: Omit<T, "_id">): Promise<T> {
+    const _id = shortid.generate();
+    const result = new this._model({ _id: _id, ...item });
+    await result.save();
     return result;
   }
 
-  async update(id: string, item: T): Promise<boolean> {
-    const result = await this._model.findByIdAndUpdate(id, { $set: item });
+  async update(id: string, item: Partial<T>): Promise<boolean> {
+    const result = await this._model.findByIdAndUpdate(
+      id,
+      { $set: item },
+      { new: true }
+    );
     return !!result;
   }
 
@@ -32,7 +38,7 @@ export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
 
   async findOne(id: string): Promise<T> {
     const result = await this._model.findById(id);
-    // @ts-ignore
+    // @ts-expect-error
     return result;
   }
 }
