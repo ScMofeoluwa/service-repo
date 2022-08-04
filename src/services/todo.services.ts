@@ -1,7 +1,9 @@
 import { TodoRepository } from "../repository/todo/todo.mongo.repository";
 import { ITodoService } from "../interfaces/ITodo";
 import { Todo } from "../entities/todo.entity";
+import { injectable } from "inversify";
 
+@injectable()
 export class TodoService implements ITodoService {
   constructor(private readonly _repository: TodoRepository) {}
 

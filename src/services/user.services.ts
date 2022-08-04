@@ -2,7 +2,9 @@ import { UserRepository } from "../repository/user/user.mongo.repository";
 import { IUserService } from "../interfaces/IUser";
 import { genSalt, hash, compare } from "bcryptjs";
 import { User } from "../entities/user.entity";
+import { injectable } from "inversify";
 
+@injectable()
 export class UserService implements IUserService {
   constructor(private readonly _repository: UserRepository) {}
 
@@ -33,7 +35,7 @@ export class UserService implements IUserService {
 
   async hashPassword(password: string): Promise<string> {
     const salt = await genSalt(10);
-    return await hash(salt, password);
+    return await hash(password, salt);
   }
 
   async isValidPassword(
