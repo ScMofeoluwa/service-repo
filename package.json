@@ -5,7 +5,8 @@
   "scripts": {
     "pre-build": "rm -rf ./dist",
     "build": "yarn run pre-build && yarn tsc -p ./tsconfig.build.json",
-    "ts-node": "ts-node"
+    "ts-node": "ts-node",
+    "go": "node ./dist/server.js"
   },
   "license": "MIT",
   "dependencies": {
