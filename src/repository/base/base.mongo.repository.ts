@@ -6,7 +6,7 @@ import { Schema, model, Model } from "mongoose";
 export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
   public readonly _model: Model<T>;
 
-  constructor(modelName: string, schema: Schema) {
+  protected constructor(modelName: string, schema: Schema) {
     this._model = model<T>(modelName, schema);
   }
 
@@ -18,11 +18,7 @@ export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
   }
 
   async update(id: string, item: Partial<T>): Promise<boolean> {
-    const result = await this._model.findByIdAndUpdate(
-      id,
-      { $set: item },
-      { new: true }
-    );
+    const result = await this._model.findByIdAndUpdate(id, { $set: item }, { new: true });
     return !!result;
   }
 

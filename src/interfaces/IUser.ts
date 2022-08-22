@@ -6,8 +6,5 @@ export interface IUserService {
   getUser(id: string): Promise<User>;
   deleteUser(id: string): Promise<boolean>;
   hashPassword(password: string): Promise<string>;
-  isValidPassword(
-    userGivenPassword: string,
-    savedPassword: string
-  ): Promise<boolean>;
+  isValidPassword(userGivenPassword: string, savedPassword: string): Promise<boolean>;
 }
