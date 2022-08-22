@@ -1,4 +1,5 @@
-import { UserRepository } from "../repository/user/user.mongo.repository";
+import { UserRepository } from "../repository/user/user.knex.repository";
+// import { UserRepository } from "../repository/user/user.mongo.repository";
 import { IUserService } from "../interfaces/IUser";
 import { genSalt, hash, compare } from "bcryptjs";
 import { User } from "../entities/user.entity";
@@ -38,10 +39,7 @@ export class UserService implements IUserService {
     return await hash(password, salt);
   }
 
-  async isValidPassword(
-    userGivenPassword: string,
-    savedPassword: string
-  ): Promise<boolean> {
+  async isValidPassword(userGivenPassword: string, savedPassword: string): Promise<boolean> {
     return await compare(userGivenPassword, savedPassword);
   }
 }
