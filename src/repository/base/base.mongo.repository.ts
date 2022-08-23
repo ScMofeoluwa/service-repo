@@ -11,9 +11,9 @@ export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
   }
 
   async create(item: Omit<T, "_id">): Promise<T> {
-    const _id = shortid.generate();
-    const result = new this._model({ _id: _id, ...item });
-    await result.save();
+    //@ts-expect-error
+    item._id = shortid.generate();
+    const result = await this._model.create(item);
     return result;
   }
 
