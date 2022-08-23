@@ -9,5 +9,5 @@ export const todoSchema = new Schema<Todo>(
     timestamp: { type: Date, required: true },
     status: { type: String, required: true, default: "pending" },
   },
-  { versionKey: false },
+  { versionKey: false, id: false },
 );

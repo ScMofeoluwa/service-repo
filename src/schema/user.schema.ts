@@ -6,7 +6,7 @@ export const userSchema = new Schema<User>(
     _id: { type: String },
     username: { type: String, required: true },
     email: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true, select: false },
   },
-  { versionKey: false },
+  { versionKey: false, id: false },
 );
