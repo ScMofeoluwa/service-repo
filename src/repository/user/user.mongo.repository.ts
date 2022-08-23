@@ -10,7 +10,7 @@ export class UserRepository extends BaseRepository<User> {
   }
 
   async findByEmail(email: string): Promise<User> {
-    const result = await this._model.findOne({ where: { email: email } });
+    const result = this._model.findOne({ email: email });
     // @ts-expect-error
     return result;
   }
