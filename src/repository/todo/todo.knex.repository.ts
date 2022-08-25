@@ -3,8 +3,8 @@ import { Todo } from "../../entities/todo.entity";
 import { injectable } from "inversify";
 
 @injectable()
-export class UserRepository extends BaseRepository<Todo> {
+export class TodoRepository extends BaseRepository<Todo> {
   constructor() {
-    super("todo");
+    super("todos");
   }
 }

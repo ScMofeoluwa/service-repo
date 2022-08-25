@@ -5,7 +5,7 @@ import { injectable } from "inversify";
 @injectable()
 export class UserRepository extends BaseRepository<User> {
   constructor() {
-    super("user");
+    super("users");
   }
 
   async findByEmail(email: string): Promise<User> {
