@@ -1,16 +1,16 @@
 import type { Knex } from "knex";
-
+import { configuration } from "../config/config";
 // Update with your config settings.
 
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: "postgresql",
     connection: {
-      database: "service-repo",
-      user: "postgres",
-      password: "postgres",
-      host: "127.0.0.1",
-      port: 5555,
+      database: configuration.database,
+      user: configuration.username,
+      password: configuration.password,
+      host: configuration.host,
+      port: configuration.port,
     },
     pool: {
       min: 2,

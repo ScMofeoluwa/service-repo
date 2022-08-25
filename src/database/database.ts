@@ -6,7 +6,7 @@ import { injectable } from "inversify";
 @injectable()
 export class DBService {
   async mongoConnect() {
-    await connect("mongodb+srv://mongo:djROJfNopmCqJFAg@cluster0.5w8f3nf.mongodb.net/test");
+    await connect("mongodb://localhost:27000/test");
     console.log("connected to Mongo Cluster");
   }
 
