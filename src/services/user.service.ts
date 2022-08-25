@@ -29,6 +29,11 @@ export class UserService implements IUserService {
     return users;
   }
 
+  async getUserByEmail(email: string): Promise<User> {
+    const user = await this._repository.findByEmail(email);
+    return user;
+  }
+
   async deleteUser(id: string): Promise<boolean> {
     const result = await this._repository.delete(id);
     return result;
