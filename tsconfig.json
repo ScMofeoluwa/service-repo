@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "target": "es2017",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
   },
-  "include": ["src"]
+  "include": ["src", "env.d.ts"]
 }

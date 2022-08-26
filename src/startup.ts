@@ -1,29 +1,12 @@
-import express from "express"
 import "reflect-metadata";
-import { dbConnect } from "./db/mongo-database";
-import { Container } from "inversify";
-import { InversifyExpressServer } from "inversify-express-utils";
-import { UserRepository } from "./repository/user/user.knex.repository";
-import { UserService } from "./services/user.services";
 import "./controller/user.controller";
+import "./controller/todo.controller";
+import "./controller/auth.controller";
+import { App } from "./application";
 
-
-export function startup(port: number) {
-  dbConnect();
-  const container = new Container({ skipBaseClassChecks: true });
-  container.bind(UserService).toSelf();
-  container.bind(UserRepository).toSelf();
-  const server = new InversifyExpressServer(container);
-
-  server.setConfig((app) => {
-    app.use(express.json())
-  });
-
-  const app = server.build();
-
-  app.listen(port, () => {
-    console.log(`Server started on http://localhost:${port}`);
-  });
+export async function startup(port: number) {
+  const app = new App();
+  await app.setup(port);
 }
 
-startup(5000)
+startup(5000);
