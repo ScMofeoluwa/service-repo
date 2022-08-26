@@ -1,25 +1,10 @@
 import { UserService } from "../services/user.service";
-import { validateCreate } from "../validators/user.validator";
 import { Request, Response } from "express";
 import { controller, httpPost, httpGet } from "inversify-express-utils";
 
 @controller("/users")
 export class UserController {
   constructor(public readonly _service: UserService) {}
-
-  @httpPost("/")
-  async store(req: Request, res: Response): Promise<void> {
-    try {
-      const { error } = validateCreate(req.body);
-      if (error) res.status(400).send({ message: error.details[0].message, data: null });
-
-      const user = await this._service.createUser(req.body);
-      res.status(201).send({ message: "user successfully created", data: user });
-    } catch (err) {
-      //@ts-expect-error
-      res.status(400).send({ message: err.message, data: null });
-    }
-  }
 
   @httpGet("/:id")
   async index(req: Request, res: Response): Promise<any> {
