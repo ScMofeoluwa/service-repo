@@ -1,4 +1,5 @@
-import { TodoRepository } from "../repository/todo/todo.mongo.repository";
+import { TodoRepository } from "../repository/todo/todo.knex.repository";
+// import { TodoRepository } from "../repository/todo/todo.mongo.repository";
 import { ITodoService } from "../interfaces/ITodo";
 import { Todo } from "../entities/todo.entity";
 import { injectable } from "inversify";
@@ -14,11 +15,14 @@ export class TodoService implements ITodoService {
 
   async getTodo(id: string): Promise<Todo> {
     const todo = await this._repository.findOne(id);
+    if (!todo) {
+      throw new Error("todo does not exists.");
+    }
     return todo;
   }
 
-  async getTodos(): Promise<Todo[]> {
-    const todos = await this._repository.find();
+  async getTodos(userId: string): Promise<Todo[]> {
+    const todos = await this._repository.findAllByUser(userId);
     return todos;
   }
 

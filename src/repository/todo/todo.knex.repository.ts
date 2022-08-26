@@ -7,4 +7,9 @@ export class TodoRepository extends BaseRepository<Todo> {
   constructor() {
     super("todos");
   }
+
+  async findAllByUser(userId: string): Promise<Todo[]> {
+    const result = await this._model.where("userId", userId);
+    return result;
+  }
 }
