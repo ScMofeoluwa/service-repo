@@ -1,5 +1,5 @@
-import { IWrite } from "../../interfaces/IWrite";
-import { IRead } from "../../interfaces/IRead";
+import { IWrite } from "../../entities/IWrite";
+import { IRead } from "../../entities/IRead";
 import shortid from "shortid";
 import { Schema, model, Model } from "mongoose";
 

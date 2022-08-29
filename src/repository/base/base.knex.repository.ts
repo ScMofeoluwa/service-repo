@@ -1,5 +1,5 @@
-import { IWrite } from "../../interfaces/IWrite";
-import { IRead } from "../../interfaces/IRead";
+import { IWrite } from "../../entities/IWrite";
+import { IRead } from "../../entities/IRead";
 import { DBService } from "../../database/database";
 import { container } from "../../inversify.config";
 import type { Knex } from "knex";

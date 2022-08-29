@@ -1,6 +1,6 @@
 import { UserRepository } from "../repository/user/user.knex.repository";
 // import { UserRepository } from "../repository/user/user.mongo.repository";
-import { IUserService } from "../interfaces/IUser";
+import { IUserService } from "../entities/user.entity";
 import { genSalt, hash, compare } from "bcryptjs";
 import { User } from "../entities/user.entity";
 import { injectable } from "inversify";

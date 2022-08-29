@@ -1,6 +1,6 @@
 import { TodoRepository } from "../repository/todo/todo.knex.repository";
 // import { TodoRepository } from "../repository/todo/todo.mongo.repository";
-import { ITodoService } from "../interfaces/ITodo";
+import { ITodoService } from "../entities/todo.entity";
 import { Todo } from "../entities/todo.entity";
 import { injectable } from "inversify";
 
