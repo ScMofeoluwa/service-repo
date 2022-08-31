@@ -8,7 +8,7 @@
     "go": "node ./dist/startup.js",
     "verify-format": "prettier --check src/**",
     "format": "prettier --write src/**",
-    "leggo": "nodemon --watch './**/*.ts' --exec 'ts-node' src/startup.ts"
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/startup.ts"
   },
   "license": "MIT",
   "dependencies": {
