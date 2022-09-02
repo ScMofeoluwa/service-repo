@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  dashr-api:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    image: rscheele3214/service-repo:latest
+    restart: always
+    volumes:
+      - .:/service-repo
+    env_file:
+      - .env
