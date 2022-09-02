@@ -12,6 +12,7 @@ const config = {
     rtSecret: process.env.REFRESH_SECRET,
     atSecret: process.env.ACCESS_SECRET,
     tokenLife: process.env.TOKEN_LIFE,
+    app_port: process.env.PORT,
   },
   test: {
     username: process.env.DB_USERNAME,
