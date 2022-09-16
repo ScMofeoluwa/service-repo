@@ -1,7 +1,7 @@
 # Service-Repo
 
 ## Description
-This project tries to implement a NodeJS, ExpressJS, KnexJS and MongoDB powered application using repository pattern and dependency injection. The main idea is to build an application that is independent of any framework or database. This application uses Typescript and in the coming days I'd be looking at dockerizing the application for the fun of it 😂
+This project tries to implement a NodeJS, ExpressJS, KnexJS and MongoDB powered application using repository pattern and dependency injection. The main idea is to build an application that is independent of any framework or database. This application uses Typescript 🛠.
 
 ## Running the app
 
